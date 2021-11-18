@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/main.cpp
+iostream
+-
+tuple
+-
+vector
+-
+boost/container/flat_set.hpp
+-
+

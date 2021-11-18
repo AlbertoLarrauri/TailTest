@@ -1,0 +1,4 @@
+/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/main.dir
+/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir
