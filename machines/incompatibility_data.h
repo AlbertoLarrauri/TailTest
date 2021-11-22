@@ -33,37 +33,42 @@ namespace TailTest {
         IMPL impl;
 
 
-        inline size_t pairToID(const uint32_t s_M, const uint32_t s_A) const {
-            return size_t(m_size) * size_t(a_size) + size_t(s_M);
+        inline size_t pairToID(const uint32_t s, const uint32_t a) const {
+            return size_t(m_size) * size_t(a) + size_t(s);
         }
 
-        static inline size_t toEntry(size_t state1, size_t state2) {
+        inline size_t toEntry(size_t state1, size_t state2) {
             if (state1 >= state2) {
                 return (state1 * (state1 + 1)) / 2 + state2;
             }
             return (state2 * (state2 + 1)) / 2 + state1;
         };
 
+        inline size_t toEntry(const uint32_t s, const uint32_t a, const uint32_t t, const uint32_t b){
+            auto pair1= pairToID(s,a);
+            auto pair2= pairToID(t,b);
+            return toEntry(pair1,pair2);
+        }
+
+
+
     public:
 
         IncompatibilityData(const DFSM &M, const NFA &A);
 
         inline bool areCompatible(uint32_t s, uint32_t a, uint32_t t, uint32_t b) {
-            auto pair1 = pairToID(s, a);
-            auto pair2 = pairToID(t, b);
-            auto entry = toEntry(pair1, pair2);
-
+            auto entry = toEntry(s,a,t,b);
             return (impl.at(entry).in == COMPAT);
         }
 
 
         inline std::vector<uint32_t> distinguishingSequence(uint32_t s, uint32_t a, uint32_t t, uint32_t b) {
-            assert(!areCompatible(s, a, t, b));
+
             std::vector<uint32_t> sequence;
             sequence.reserve(m_size * a_size);
-            auto pair1 = pairToID(s, a);
-            auto pair2 = pairToID(t, b);
-            auto entry = toEntry(pair1, pair2);
+
+            auto entry = toEntry(s,a,t,b);
+            assert(!(impl.at(entry).in== COMPAT));
 
             while (entry != NO_SUCC) {
                 sequence.push_back(impl.at(entry).in);

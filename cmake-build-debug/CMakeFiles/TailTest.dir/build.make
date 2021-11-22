@@ -53,10 +53,10 @@ RM = /snap/clion/169/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest
+CMAKE_SOURCE_DIR = /home/lazhares/CLionProjects/TailTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug
+CMAKE_BINARY_DIR = /home/lazhares/CLionProjects/TailTest/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/TailTest.dir/depend.make
@@ -68,62 +68,90 @@ include CMakeFiles/TailTest.dir/flags.make
 
 CMakeFiles/TailTest.dir/machines/machines.cpp.o: CMakeFiles/TailTest.dir/flags.make
 CMakeFiles/TailTest.dir/machines/machines.cpp.o: ../machines/machines.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TailTest.dir/machines/machines.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/machines.cpp.o -c /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/machines.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TailTest.dir/machines/machines.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/machines.cpp.o -c /home/lazhares/CLionProjects/TailTest/machines/machines.cpp
 
 CMakeFiles/TailTest.dir/machines/machines.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TailTest.dir/machines/machines.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/machines.cpp > CMakeFiles/TailTest.dir/machines/machines.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lazhares/CLionProjects/TailTest/machines/machines.cpp > CMakeFiles/TailTest.dir/machines/machines.cpp.i
 
 CMakeFiles/TailTest.dir/machines/machines.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TailTest.dir/machines/machines.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/machines.cpp -o CMakeFiles/TailTest.dir/machines/machines.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lazhares/CLionProjects/TailTest/machines/machines.cpp -o CMakeFiles/TailTest.dir/machines/machines.cpp.s
 
 CMakeFiles/TailTest.dir/machines/builders.cpp.o: CMakeFiles/TailTest.dir/flags.make
 CMakeFiles/TailTest.dir/machines/builders.cpp.o: ../machines/builders.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TailTest.dir/machines/builders.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/builders.cpp.o -c /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/builders.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TailTest.dir/machines/builders.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/builders.cpp.o -c /home/lazhares/CLionProjects/TailTest/machines/builders.cpp
 
 CMakeFiles/TailTest.dir/machines/builders.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TailTest.dir/machines/builders.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/builders.cpp > CMakeFiles/TailTest.dir/machines/builders.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lazhares/CLionProjects/TailTest/machines/builders.cpp > CMakeFiles/TailTest.dir/machines/builders.cpp.i
 
 CMakeFiles/TailTest.dir/machines/builders.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TailTest.dir/machines/builders.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/builders.cpp -o CMakeFiles/TailTest.dir/machines/builders.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lazhares/CLionProjects/TailTest/machines/builders.cpp -o CMakeFiles/TailTest.dir/machines/builders.cpp.s
 
 CMakeFiles/TailTest.dir/machines/serializer.cpp.o: CMakeFiles/TailTest.dir/flags.make
 CMakeFiles/TailTest.dir/machines/serializer.cpp.o: ../machines/serializer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TailTest.dir/machines/serializer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/serializer.cpp.o -c /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/serializer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TailTest.dir/machines/serializer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/serializer.cpp.o -c /home/lazhares/CLionProjects/TailTest/machines/serializer.cpp
 
 CMakeFiles/TailTest.dir/machines/serializer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TailTest.dir/machines/serializer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/serializer.cpp > CMakeFiles/TailTest.dir/machines/serializer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lazhares/CLionProjects/TailTest/machines/serializer.cpp > CMakeFiles/TailTest.dir/machines/serializer.cpp.i
 
 CMakeFiles/TailTest.dir/machines/serializer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TailTest.dir/machines/serializer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/serializer.cpp -o CMakeFiles/TailTest.dir/machines/serializer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lazhares/CLionProjects/TailTest/machines/serializer.cpp -o CMakeFiles/TailTest.dir/machines/serializer.cpp.s
 
 CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o: CMakeFiles/TailTest.dir/flags.make
 CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o: ../machines/incompatibility_data.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o -c /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/incompatibility_data.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o -c /home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.cpp
 
 CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/incompatibility_data.cpp > CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.cpp > CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.i
 
 CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/incompatibility_data.cpp -o CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.cpp -o CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.s
+
+CMakeFiles/TailTest.dir/machines/input_tree.cpp.o: CMakeFiles/TailTest.dir/flags.make
+CMakeFiles/TailTest.dir/machines/input_tree.cpp.o: ../machines/input_tree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/TailTest.dir/machines/input_tree.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/input_tree.cpp.o -c /home/lazhares/CLionProjects/TailTest/machines/input_tree.cpp
+
+CMakeFiles/TailTest.dir/machines/input_tree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TailTest.dir/machines/input_tree.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lazhares/CLionProjects/TailTest/machines/input_tree.cpp > CMakeFiles/TailTest.dir/machines/input_tree.cpp.i
+
+CMakeFiles/TailTest.dir/machines/input_tree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TailTest.dir/machines/input_tree.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lazhares/CLionProjects/TailTest/machines/input_tree.cpp -o CMakeFiles/TailTest.dir/machines/input_tree.cpp.s
+
+CMakeFiles/TailTest.dir/machines/quotient.cpp.o: CMakeFiles/TailTest.dir/flags.make
+CMakeFiles/TailTest.dir/machines/quotient.cpp.o: ../machines/quotient.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TailTest.dir/machines/quotient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TailTest.dir/machines/quotient.cpp.o -c /home/lazhares/CLionProjects/TailTest/machines/quotient.cpp
+
+CMakeFiles/TailTest.dir/machines/quotient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TailTest.dir/machines/quotient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lazhares/CLionProjects/TailTest/machines/quotient.cpp > CMakeFiles/TailTest.dir/machines/quotient.cpp.i
+
+CMakeFiles/TailTest.dir/machines/quotient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TailTest.dir/machines/quotient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lazhares/CLionProjects/TailTest/machines/quotient.cpp -o CMakeFiles/TailTest.dir/machines/quotient.cpp.s
 
 # Object files for target TailTest
 TailTest_OBJECTS = \
 "CMakeFiles/TailTest.dir/machines/machines.cpp.o" \
 "CMakeFiles/TailTest.dir/machines/builders.cpp.o" \
 "CMakeFiles/TailTest.dir/machines/serializer.cpp.o" \
-"CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o"
+"CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o" \
+"CMakeFiles/TailTest.dir/machines/input_tree.cpp.o" \
+"CMakeFiles/TailTest.dir/machines/quotient.cpp.o"
 
 # External object files for target TailTest
 TailTest_EXTERNAL_OBJECTS =
@@ -132,9 +160,11 @@ libTailTest.so: CMakeFiles/TailTest.dir/machines/machines.cpp.o
 libTailTest.so: CMakeFiles/TailTest.dir/machines/builders.cpp.o
 libTailTest.so: CMakeFiles/TailTest.dir/machines/serializer.cpp.o
 libTailTest.so: CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o
+libTailTest.so: CMakeFiles/TailTest.dir/machines/input_tree.cpp.o
+libTailTest.so: CMakeFiles/TailTest.dir/machines/quotient.cpp.o
 libTailTest.so: CMakeFiles/TailTest.dir/build.make
 libTailTest.so: CMakeFiles/TailTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libTailTest.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libTailTest.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TailTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -146,6 +176,6 @@ CMakeFiles/TailTest.dir/clean:
 .PHONY : CMakeFiles/TailTest.dir/clean
 
 CMakeFiles/TailTest.dir/depend:
-	cd /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/lazhares/CLionProjects/TailTest/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lazhares/CLionProjects/TailTest /home/lazhares/CLionProjects/TailTest /home/lazhares/CLionProjects/TailTest/cmake-build-debug /home/lazhares/CLionProjects/TailTest/cmake-build-debug /home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/TailTest.dir/depend
 

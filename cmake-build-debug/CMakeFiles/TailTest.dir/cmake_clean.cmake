@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TailTest.dir/machines/builders.cpp.o"
   "CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o"
+  "CMakeFiles/TailTest.dir/machines/input_tree.cpp.o"
   "CMakeFiles/TailTest.dir/machines/machines.cpp.o"
+  "CMakeFiles/TailTest.dir/machines/quotient.cpp.o"
   "CMakeFiles/TailTest.dir/machines/serializer.cpp.o"
   "libTailTest.pdb"
   "libTailTest.so"

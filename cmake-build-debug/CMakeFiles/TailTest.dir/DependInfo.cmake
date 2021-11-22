@@ -8,10 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/builders.cpp" "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/builders.cpp.o"
-  "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/incompatibility_data.cpp" "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o"
-  "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/machines.cpp" "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/machines.cpp.o"
-  "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/serializer.cpp" "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/serializer.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/builders.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/builders.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/input_tree.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/input_tree.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/machines.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/machines.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/quotient.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/quotient.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/serializer.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir/machines/serializer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

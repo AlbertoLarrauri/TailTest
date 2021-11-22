@@ -11,8 +11,11 @@ add_library( TailTest SHARED
         machines/builders.cpp
         machines/serializer.cpp
         machines/serializer.h
-        machines/incompatibility_data.cpp machines/incompatibility_data.h)
+        machines/incompatibility_data.cpp machines/incompatibility_data.h machines/input_tree.cpp machines/input_tree.h machines/quotient.cpp machines/quotient.h)
 
 
-add_executable(main main.cpp utils.h)
+add_executable(main main.cpp utils.h machines/input_tree.h machines/input_tree.cpp
+        machines/machines.h machines/machines.cpp
+        machines/incompatibility_data.h machines/incompatibility_data.cpp
+        )
 # target_link_libraries(main PUBLIC SBCMin)

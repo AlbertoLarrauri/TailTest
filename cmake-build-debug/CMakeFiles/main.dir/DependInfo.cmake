@@ -8,7 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/main.cpp" "/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles/main.dir/main.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/main.dir/machines/incompatibility_data.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/input_tree.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/main.dir/machines/input_tree.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/machines/machines.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/main.dir/machines/machines.cpp.o"
+  "/home/lazhares/CLionProjects/TailTest/main.cpp" "/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/main.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

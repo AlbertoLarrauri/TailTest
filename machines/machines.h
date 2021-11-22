@@ -208,9 +208,9 @@ namespace TailTest
 
             auto& trans=impl.at(SIToID(source, in));
             auto& r_succs=r_impl.at(SIToID(target, in));
-            auto& r_symbols=r_info_impl.at(source);
+            auto& r_symbols=r_info_impl.at(target);
 
-            if(!r_succs.empty()){
+            if(!(r_succs.empty())){
                 assert(!r_succs.contains(source));
             } else {
                 r_symbols.insert(in);

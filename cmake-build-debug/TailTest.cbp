@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main">
-				<Option output="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option output="/home/lazhares/CLionProjects/TailTest/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main/fast">
-				<Option output="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option output="/home/lazhares/CLionProjects/TailTest/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,15 +75,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="TailTest">
-				<Option output="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/libTailTest.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option output="/home/lazhares/CLionProjects/TailTest/cmake-build-debug/libTailTest.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -97,15 +97,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 TailTest"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 TailTest"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="TailTest/fast">
-				<Option output="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/libTailTest.so" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug"/>
+				<Option output="/home/lazhares/CLionProjects/TailTest/cmake-build-debug/libTailTest.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/lazhares/CLionProjects/TailTest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="3"/>
 				<Option compiler="gcc"/>
@@ -119,44 +119,62 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 TailTest/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 TailTest/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/lazhares/CLionProjects/TailTest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/utils.h">
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/builders.cpp">
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/builders.h">
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.cpp">
+			<Option target="main"/>
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/incompatibility_data.h">
+			<Option target="main"/>
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/input_tree.cpp">
+			<Option target="main"/>
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/input_tree.h">
+			<Option target="main"/>
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/machines.cpp">
+			<Option target="main"/>
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/machines.h">
+			<Option target="main"/>
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/quotient.cpp">
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/quotient.h">
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/serializer.cpp">
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/machines/serializer.h">
+			<Option target="TailTest"/>
+		</Unit>
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/main.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/builders.cpp">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/builders.h">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/incompatibility_data.cpp">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/incompatibility_data.h">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/machines.cpp">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/machines.h">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/serializer.cpp">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/machines/serializer.h">
-			<Option target="TailTest"/>
-		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/main.cpp">
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/utils.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/CMakeLists.txt">
+		<Unit filename="/home/lazhares/CLionProjects/TailTest/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

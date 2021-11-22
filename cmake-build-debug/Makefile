@@ -57,10 +57,10 @@ RM = /snap/clion/169/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest
+CMAKE_SOURCE_DIR = /home/lazhares/CLionProjects/TailTest
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug
+CMAKE_BINARY_DIR = /home/lazhares/CLionProjects/TailTest/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles /home/lazhares/CLionProjects/TailTest/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/llarrauriborroto/Documents/Projects/TestingComponents/TailTest/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -171,6 +171,7 @@ machines/incompatibility_data.o: machines/incompatibility_data.cpp.o
 
 # target to build an object file
 machines/incompatibility_data.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/incompatibility_data.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.o
 .PHONY : machines/incompatibility_data.cpp.o
 
@@ -179,6 +180,7 @@ machines/incompatibility_data.i: machines/incompatibility_data.cpp.i
 
 # target to preprocess a source file
 machines/incompatibility_data.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/incompatibility_data.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.i
 .PHONY : machines/incompatibility_data.cpp.i
 
@@ -187,14 +189,43 @@ machines/incompatibility_data.s: machines/incompatibility_data.cpp.s
 
 # target to generate assembly for a file
 machines/incompatibility_data.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/incompatibility_data.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/incompatibility_data.cpp.s
 .PHONY : machines/incompatibility_data.cpp.s
+
+machines/input_tree.o: machines/input_tree.cpp.o
+.PHONY : machines/input_tree.o
+
+# target to build an object file
+machines/input_tree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/input_tree.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/input_tree.cpp.o
+.PHONY : machines/input_tree.cpp.o
+
+machines/input_tree.i: machines/input_tree.cpp.i
+.PHONY : machines/input_tree.i
+
+# target to preprocess a source file
+machines/input_tree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/input_tree.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/input_tree.cpp.i
+.PHONY : machines/input_tree.cpp.i
+
+machines/input_tree.s: machines/input_tree.cpp.s
+.PHONY : machines/input_tree.s
+
+# target to generate assembly for a file
+machines/input_tree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/input_tree.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/input_tree.cpp.s
+.PHONY : machines/input_tree.cpp.s
 
 machines/machines.o: machines/machines.cpp.o
 .PHONY : machines/machines.o
 
 # target to build an object file
 machines/machines.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/machines.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/machines.cpp.o
 .PHONY : machines/machines.cpp.o
 
@@ -203,6 +234,7 @@ machines/machines.i: machines/machines.cpp.i
 
 # target to preprocess a source file
 machines/machines.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/machines.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/machines.cpp.i
 .PHONY : machines/machines.cpp.i
 
@@ -211,8 +243,33 @@ machines/machines.s: machines/machines.cpp.s
 
 # target to generate assembly for a file
 machines/machines.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/machines/machines.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/machines.cpp.s
 .PHONY : machines/machines.cpp.s
+
+machines/quotient.o: machines/quotient.cpp.o
+.PHONY : machines/quotient.o
+
+# target to build an object file
+machines/quotient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/quotient.cpp.o
+.PHONY : machines/quotient.cpp.o
+
+machines/quotient.i: machines/quotient.cpp.i
+.PHONY : machines/quotient.i
+
+# target to preprocess a source file
+machines/quotient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/quotient.cpp.i
+.PHONY : machines/quotient.cpp.i
+
+machines/quotient.s: machines/quotient.cpp.s
+.PHONY : machines/quotient.s
+
+# target to generate assembly for a file
+machines/quotient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TailTest.dir/build.make CMakeFiles/TailTest.dir/machines/quotient.cpp.s
+.PHONY : machines/quotient.cpp.s
 
 machines/serializer.o: machines/serializer.cpp.o
 .PHONY : machines/serializer.o
@@ -278,9 +335,15 @@ help:
 	@echo "... machines/incompatibility_data.o"
 	@echo "... machines/incompatibility_data.i"
 	@echo "... machines/incompatibility_data.s"
+	@echo "... machines/input_tree.o"
+	@echo "... machines/input_tree.i"
+	@echo "... machines/input_tree.s"
 	@echo "... machines/machines.o"
 	@echo "... machines/machines.i"
 	@echo "... machines/machines.s"
+	@echo "... machines/quotient.o"
+	@echo "... machines/quotient.i"
+	@echo "... machines/quotient.s"
 	@echo "... machines/serializer.o"
 	@echo "... machines/serializer.i"
 	@echo "... machines/serializer.s"
