@@ -1,4 +1,0 @@
-/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/main.dir
-/home/lazhares/CLionProjects/TailTest/cmake-build-debug/CMakeFiles/TailTest.dir
