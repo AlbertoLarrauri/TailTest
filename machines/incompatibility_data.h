@@ -44,6 +44,30 @@ namespace TailTest {
             return (state2 * (state2 + 1)) / 2 + state1;
         };
 
+        inline std::tuple<size_t,size_t> entryToIDs(size_t entry){
+            size_t pair1=0;
+            while(pair1+1<=entry){
+                ++pair1;
+                entry=entry-pair1;
+            }
+
+            size_t pair2=entry;
+            return {pair1,pair2};
+        }
+
+        inline std::tuple<uint32_t ,uint32_t> iDToPair(size_t pair){
+            uint32_t a = pair/m_size;
+            uint32_t s = pair% m_size;
+            return {s,a};
+        }
+
+        inline std::tuple<uint32_t ,uint32_t ,uint32_t , uint32_t > entryToStates(size_t entry){
+            auto [pair1,pair2]=entryToIDs(entry);
+            auto [s,a]=iDToPair(pair1);
+            auto [t,b]=iDToPair(pair2);
+            return {s,a,t,b};
+        }
+
         inline size_t toEntry(const uint32_t s, const uint32_t a, const uint32_t t, const uint32_t b){
             auto pair1= pairToID(s,a);
             auto pair2= pairToID(t,b);
@@ -78,6 +102,16 @@ namespace TailTest {
             sequence.shrink_to_fit();
             return sequence;
         }
+
+//        inline std::tuple<uint32_t ,uint32_t ,uint32_t ,uint32_t > next(uint32_t s, uint32_t a, uint32_t t,
+//                                                                   uint32_t b){
+//            auto entry= toEntry(s,a,t,b);
+//            auto next_entry=impl[entry].next;
+//            auto [pair1,pair2]=entryToIDs(next_entry);
+//            auto [s2,a2]=iDToPair(pair1);
+//            auto [t2,b2]=iDToPair(pair2);
+//            return {s2,a2,t2,b2};
+//        }
 
     };
 }

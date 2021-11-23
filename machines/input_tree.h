@@ -26,7 +26,7 @@ namespace TailTest {
             impl.resize(in_alphabet_size,0);
         }
 
-        void addSequence(const std::vector<uint32_t>& seq, size_t node=0);
+        size_t addSequence(const std::vector<uint32_t>& seq, size_t node= 0);
 
         size_t countSequences();
 

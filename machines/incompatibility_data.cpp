@@ -13,7 +13,7 @@ IncompatibilityData::IncompatibilityData(const TailTest::DFSM &M, const TailTest
 m_size(M.size()),
 a_size(A.size()),
 COMPAT(M.numberOfInputs()),
-NO_SUCC(M.size()*A.size()) {
+NO_SUCC(((M.size()*A.size())*(M.size()*A.size()+1))/2) {
     typedef boost::container::flat_set<uint32_t> flat_set;
 
     std::vector<flat_set> r_symbols(a_size*m_size);
@@ -35,7 +35,7 @@ NO_SUCC(M.size()*A.size()) {
     }
 
 
-    auto size_impl = ((NO_SUCC) * (NO_SUCC + 1)) / 2;
+    auto size_impl = NO_SUCC;
 
     impl.resize(size_impl, {NO_SUCC,COMPAT});
 

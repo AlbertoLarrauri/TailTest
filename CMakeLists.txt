@@ -11,7 +11,7 @@ add_library( TailTest SHARED
         machines/builders.cpp
         machines/serializer.cpp
         machines/serializer.h
-        machines/incompatibility_data.cpp machines/incompatibility_data.h machines/input_tree.cpp machines/input_tree.h machines/quotient.cpp machines/quotient.h)
+        machines/incompatibility_data.cpp machines/incompatibility_data.h machines/input_tree.cpp machines/input_tree.h machines/quotient.cpp machines/quotient.h testers/basic.cpp testers/basic.h)
 
 
 add_executable(main main.cpp utils.h machines/input_tree.h machines/input_tree.cpp

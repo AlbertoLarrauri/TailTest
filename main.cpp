@@ -145,7 +145,7 @@ int main() {
     M.addTransition(0,0,1,1);
 
     M.addTransition(1,1,1,0);
-    M.addTransition(1,0,0,1);
+    M.addTransition(1,0,0,0);
 
 
     std::cout<<"Machines built \n";
@@ -162,19 +162,19 @@ int main() {
 
 
    IncompatibilityData data(M,A);
-
-   for(uint32_t s=0; s<M.size(); ++s){
-       for(uint32_t t=s+1; t<M.size(); ++t){
-           for (uint32_t a = 0; a <A.size(); ++a) {
-               for (uint32_t b = 0; b < A.size(); ++b) {
-                   std::cout<<"("<<s<<','<<a<<"), and ("<<t<<","<<b<<") compatible: "<<
-                   data.areCompatible(s,a,t,b)<<"\n";
-               }
-           }
-       }
-   }
-
-    printSequence(data.distinguishingSequence(0,2,1,0));
+//
+//   for(uint32_t s=0; s<M.size(); ++s){
+//       for(uint32_t t=s+1; t<M.size(); ++t){
+//           for (uint32_t a = 0; a <A.size(); ++a) {
+//               for (uint32_t b = 0; b < A.size(); ++b) {
+//                   std::cout<<"("<<s<<','<<a<<"), and ("<<t<<","<<b<<") compatible: "<<
+//                   data.areCompatible(s,a,t,b)<<"\n";
+//               }
+//           }
+//       }
+//   }
+    std::cout<<"Start ("<<0<<','<<1<<"), and ("<<1<<","<<2<<") \n";
+    printSequence(data.distinguishingSequence(0,1,1,2));
 
 
 
