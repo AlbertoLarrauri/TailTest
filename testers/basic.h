@@ -14,10 +14,12 @@
 namespace TailTest {
     class BasicTester {
 
-//        IncompatibilityData data;
-//        const DFSM& M;
-//        const NFA& A;
     private:
+
+        IncompatibilityData data;
+        const DFSM& M;
+        const NFA& A;
+
         typedef boost::container::flat_set<uint32_t> flat_set;
         typedef boost::container::flat_map<uint32_t,flat_set> flat_map;
         struct Frame{
@@ -25,22 +27,22 @@ namespace TailTest {
             Iterator it;
             flat_set inputs;
             flat_set A_set;
-            flat_map r_succs;
             uint32_t s;
             uint32_t node;
         };
 
-        std::vector<uint32_t > current_seq;
-        std::vector< Frame > frames;
+        std::vector<uint32_t > curr_seq;
+        std::vector<Frame> frames;
+        std::vector<flat_set> back_propagation;
 
-        void step(uint32_t in);
+
+        void step();
 
         void pop();
 
     public:
 
-        InputTree getSuite(const DFSM& M, const NFA& A, uint32_t k);
-
+        InputTree getSuite(uint32_t k);
 
     };
 }
