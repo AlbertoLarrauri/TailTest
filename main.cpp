@@ -9,14 +9,14 @@
 
 
 
-//inline boost::container::flat_set<uint32_t> intersect(const boost::container::flat_set<uint32_t>& set0,
-//                                                      const boost::container::flat_set<uint32_t>& set1){
+//inline boost::container::num_vector<uint32_t> intersect(const boost::container::num_vector<uint32_t>& set0,
+//                                                      const boost::container::num_vector<uint32_t>& set1){
 //
-//    typedef boost::container::flat_set<uint32_t> flat_set;
-//    flat_set intersection;
+//    typedef boost::container::num_vector<uint32_t> num_vector;
+//    num_vector intersection;
 //
-//    flat_set::const_iterator its[2]={set0.begin(),set1.begin()};
-//    flat_set::const_iterator ends[2]={set0.end(), set1.end()};
+//    num_vector::const_iterator its[2]={set0.begin(),set1.begin()};
+//    num_vector::const_iterator ends[2]={set0.end(), set1.end()};
 //    int current=0;
 //
 //    while(true){
@@ -39,8 +39,8 @@
 //
 //class IntersectionIterator {
 //private:
-//    typedef boost::container::flat_set<uint32_t> flat_set;
-//    typedef boost::container::flat_set<uint32_t>::const_iterator iterator;
+//    typedef boost::container::num_vector<uint32_t> num_vector;
+//    typedef boost::container::num_vector<uint32_t>::const_iterator iterator;
 //    iterator its[2];
 //    iterator ends[2];
 //    bool current;
@@ -66,7 +66,7 @@
 //
 //public:
 //
-//    IntersectionIterator(const flat_set &set0, const flat_set &set1) :
+//    IntersectionIterator(const num_vector &set0, const num_vector &set1) :
 //            its{set0.begin(), set1.begin()},
 //            ends{set0.end(), set1.end()} {
 //
@@ -156,9 +156,9 @@ int main() {
 //    printSequence(M.getRSymbols(1));
 //    printSequence(M.getRSymbols(2));
 //
-//    flat_set set1={};
-//    flat_set set2={1,2};
-//    flat_set set3= intersect(set1,set2);
+//    num_vector set1={};
+//    num_vector set2={1,2};
+//    num_vector set3= intersect(set1,set2);
 
 
    IncompatibilityData data(M,A);
@@ -176,14 +176,26 @@ int main() {
     std::cout<<"Start ("<<0<<','<<1<<"), and ("<<1<<","<<2<<") \n";
     printSequence(data.distinguishingSequence(0,1,1,2));
 
+    struct VectorContainer{
+        std::vector<uint32_t> vec;
+    };
+
+    std::vector<uint32_t> vec={2,1,2,4};
+
+    VectorContainer container={std::move(vec)};
+
+    std::cout<<" \n Container contents: \n";
+    for(auto n:container.vec){
+        std::cout<<n<<"\n";
+    }
+
+    std::cout<< container.vec.end()-container.vec.begin();
 
 
 
 
-
-
-//    std::vector<uint32_t> a={3,1};
-//    std::vector iter={a.begin(),c.begin()};
+//    std::num_vector<uint32_t> a={3,1};
+//    std::num_vector iter={a.begin(),c.begin()};
 //
 //    for(auto it:iter){
 //        std::cout<<*it<<"\n";
@@ -193,10 +205,10 @@ int main() {
 //    std::tuple<uint32_t ,uint32_t > pair=std::make_tuple(a,b);
 //    std::cout<<std::apply(f,pair)<<"\n";
 
-//    typedef boost::container::flat_set<uint32_t> flat_set;
-//    flat_set set1,set2;
-////    using boost::container::flat_set;
-////    flat_set<uint32_t> set1,set2;
+//    typedef boost::container::num_vector<uint32_t> num_vector;
+//    num_vector set1,set2;
+////    using boost::container::num_vector;
+////    num_vector<uint32_t> set1,set2;
 //    set1.insert(2);
 //    set1.insert(3);
 //    set1.insert(4);

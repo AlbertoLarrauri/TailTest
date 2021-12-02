@@ -16,9 +16,9 @@
 
 namespace TailTest
 {
-//static char wrong_size_1[1 + sizeof(std::size_t) - sizeof(std::vector<size_t>::size_type)];
+//static char wrong_size_1[1 + sizeof(std::size_t) - sizeof(std::num_vector<size_t>::size_type)];
 //
-//static char wrong_size_2[1 - sizeof(std::size_t) + sizeof(std::vector<size_t>::size_type)];
+//static char wrong_size_2[1 - sizeof(std::size_t) + sizeof(std::num_vector<size_t>::size_type)];
 
 
 
@@ -57,7 +57,7 @@ namespace TailTest
     class NFA{
     private:
         typedef boost::container::flat_set<uint32_t> flat_set;
-//        typedef std::vector<std::optional<flat_set>> T_IMPL;
+//        typedef std::num_vector<std::optional<num_vector>> T_IMPL;
         typedef std::vector<flat_set> T_IMPL;
         T_IMPL impl;
         T_IMPL info_impl;
