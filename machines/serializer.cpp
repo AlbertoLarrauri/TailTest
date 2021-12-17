@@ -10,7 +10,7 @@
 using namespace TailTest;
 
 
-void TailTest::serializeDFSM(const DFSM_old &dfsm, std::string name, std::filesystem::path dir) {
+void TailTest::serializeDFSM(const DFSM &dfsm, std::string name, std::filesystem::path dir) {
     if (!std::filesystem::exists(dir)) {
         std::filesystem::create_directory(dir);
     }
@@ -22,7 +22,7 @@ void TailTest::serializeDFSM(const DFSM_old &dfsm, std::string name, std::filesy
 }
 
 
-void TailTest::serializeDFSM(const DFSM_old &dfsm, std::ostream &ostream) {
+void TailTest::serializeDFSM(const DFSM &dfsm, std::ostream &ostream) {
     ostream << "i. " << dfsm.numberOfInputs() << "\n";
     ostream << "o. " << dfsm.numberOfOutputs() << "\n";
     ostream << "n. " << dfsm.size() << "\n";
@@ -38,7 +38,7 @@ void TailTest::serializeDFSM(const DFSM_old &dfsm, std::ostream &ostream) {
 }
 
 
-DFSM_old TailTest::deserializeDFSM(const std::filesystem::path &file_dir) {
+DFSM TailTest::deserializeDFSM(const std::filesystem::path &file_dir) {
     if (!file_dir.has_filename()) "No filename provided \n";
     std::ifstream istream(file_dir, std::ios::out);
     if (!istream) throw "Unable to open file \n";
@@ -48,7 +48,7 @@ DFSM_old TailTest::deserializeDFSM(const std::filesystem::path &file_dir) {
 
 }
 
-DFSM_old TailTest::deserializeDFSM(const std::string &str) {
+DFSM TailTest::deserializeDFSM(const std::string &str) {
     int inputs;
     {
         std::regex regex(R"(i\.\s*(\d+))");
@@ -71,7 +71,7 @@ DFSM_old TailTest::deserializeDFSM(const std::string &str) {
         assert(std::regex_search(str, match, regex));
         size = std::stoi(match[1]);
     }
-    TailTest::DFSM_old A(inputs, outputs);
+    TailTest::DFSM A(inputs, outputs);
     A.addStates(size);
     {
         std::regex regex(R"((\d+)\s*/\s*(\d+)\s*-->\s*(\d+)\s*/\s*(\d+))");
@@ -84,19 +84,19 @@ DFSM_old TailTest::deserializeDFSM(const std::string &str) {
             int in = std::stoi(match[2]);
             int out = std::stoi(match[3]);
             int succ = std::stoi(match[4]);
-            A.setTrans(state, in, out, succ);
+            A.addTransition(state, in, out, succ);
             ++rit;
         }
     }
     return A;
 }
 
-std::pair<DFSM_old, DFSM_old> TailTest::deserializeCascade(const std::filesystem::path &file_dir) {
+std::pair<DFSM, DFSM> TailTest::deserializeCascade(const std::filesystem::path &file_dir) {
     if (!file_dir.has_filename()) "No filename provided \n";
     std::ifstream istream(file_dir, std::ios::out);
     if (!istream) throw "Unable to open file \n";
     std::string str = std::string(std::istreambuf_iterator<char>(istream), std::istreambuf_iterator<char>());
-    DFSM_old driver(0, 0);
+    DFSM driver(0, 0);
     {
         std::ostringstream driver_ostream;
         std::regex driver_regex(R"(Driver\:([\S\s]*)Driven\:)");
@@ -106,7 +106,7 @@ std::pair<DFSM_old, DFSM_old> TailTest::deserializeCascade(const std::filesystem
         driver = deserializeDFSM(driver_str);
     }
 
-    DFSM_old driven(0, 0);
+    DFSM driven(0, 0);
     {
         std::ostringstream driven_ostream;
         std::regex driven_regex(R"(Driven:([\S\s]*))");
@@ -119,7 +119,7 @@ std::pair<DFSM_old, DFSM_old> TailTest::deserializeCascade(const std::filesystem
     return std::make_pair(driver, driven);
 }
 
-void TailTest::serializeCascade(const DFSM_old &driver, const DFSM_old &driven, std::string name, std::filesystem::path dir) {
+void TailTest::serializeCascade(const DFSM &driver, const DFSM &driven, std::string name, std::filesystem::path dir) {
     if (!std::filesystem::exists(dir)) {
         std::filesystem::create_directory(dir);
     }
@@ -130,6 +130,42 @@ void TailTest::serializeCascade(const DFSM_old &driver, const DFSM_old &driven, 
     serializeDFSM(driver, ostream);
     ostream << "Driven: \n";
     serializeDFSM(driven, ostream);
+    ostream.close();
+}
+
+
+
+void TailTest::serializeDFSM_FSMlib(const DFSM &dfsm, std::ostream &ostream, bool reduced) {
+    ostream<< "2 "<<reduced<<"\n";
+    ostream<< dfsm.size()<<" "<< dfsm.numberOfInputs() << " " << dfsm.numberOfOutputs()<<"\n";
+    ostream<< dfsm.size()<<" \n";
+
+    for(uint32_t state=0; state<dfsm.size(); ++state){
+        ostream<< state;
+        for(uint32_t in=0; in< dfsm.numberOfInputs(); ++in){
+            ostream<<" "<<dfsm.getOut(state, in);
+        }
+        ostream<<"\n";
+    }
+    for(uint32_t state=0; state<dfsm.size(); ++state){
+        ostream<< state;
+        for(uint32_t in=0; in< dfsm.numberOfInputs(); ++in){
+            ostream<<" "<<dfsm.getSucc(state, in);
+        }
+        ostream<<"\n";
+    }
+
+
+}
+
+void TailTest::serializeDFSM_FSMlib(const DFSM &dfsm, std::string name, std::filesystem::path dir, bool reduced) {
+    if (!std::filesystem::exists(dir)) {
+        std::filesystem::create_directory(dir);
+    }
+    name = name + ".txt";
+    std::filesystem::path file_dir = dir / name;
+    std::ofstream ostream(file_dir, std::ios_base::trunc);
+    serializeDFSM_FSMlib(dfsm, ostream,reduced);
     ostream.close();
 }
 

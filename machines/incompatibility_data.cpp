@@ -21,14 +21,14 @@ NO_SUCC(((M.size()*A.size())*(M.size()*A.size()+1))/2) {
 
     for (uint32_t s = 0; s < m_size; ++s) {
         for (uint32_t a = 0; a < a_size; ++a) {
-//            std::cout<<"s: "<<s<<", a: "<<a<<"\n";
+//            std::cout<<"s: "<<s<<", witness: "<<witness<<"\n";
 //            printSequence(M.getRSymbols(s));
 //
-//            printSequence(A.getRSymbols(a));
+//            printSequence(A.getRSymbols(witness));
 //
-//            std::cout<<"s: "<<s<<", a: "<<a<<"\n";
+//            std::cout<<"s: "<<s<<", witness: "<<witness<<"\n";
 //
-//            std::cout<<"R_symbols size: "<< r_symbols.size()<<", Current: "<<pairToID(s,a)<<"\n";
+//            std::cout<<"R_symbols size: "<< r_symbols.size()<<", Current: "<<pairToID(s,witness)<<"\n";
 
             r_symbols.at(pairToID(s, a)) = intersect(M.getRSymbols(s), A.getRSymbols(a));
         }
@@ -75,11 +75,11 @@ NO_SUCC(((M.size()*A.size())*(M.size()*A.size()+1))/2) {
         }
     }
 
-    std::cout<<"Queue: \n";
-    for(auto tpl:queue){
-        auto [s,a,t,b]=tpl;
-        std::cout<<"s: " << s<<", a: "<<a<<", t: "<<t<<", b: "<<b<<"\n";
-    }
+//    std::cout<<"Queue: \n";
+//    for(auto tpl:queue){
+//        auto [s,witness,t,b]=tpl;
+//        std::cout<<"s: " << s<<", witness: "<<witness<<", t: "<<t<<", b: "<<b<<"\n";
+//    }
 
     while (!queue.empty()) {
         auto[s, a, t, b]=queue.front();

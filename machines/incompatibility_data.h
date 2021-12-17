@@ -37,14 +37,14 @@ namespace TailTest {
             return size_t(m_size) * size_t(a) + size_t(s);
         }
 
-        inline size_t toEntry(size_t state1, size_t state2) {
+        inline size_t toEntry(size_t state1, size_t state2) const {
             if (state1 >= state2) {
                 return (state1 * (state1 + 1)) / 2 + state2;
             }
             return (state2 * (state2 + 1)) / 2 + state1;
         };
 
-        inline std::tuple<size_t,size_t> entryToIDs(size_t entry){
+        inline std::tuple<size_t,size_t> entryToIDs(size_t entry) const {
             size_t pair1=0;
             while(pair1+1<=entry){
                 ++pair1;
@@ -55,7 +55,7 @@ namespace TailTest {
             return {pair1,pair2};
         }
 
-        inline std::tuple<uint32_t ,uint32_t> iDToPair(size_t pair){
+        inline std::tuple<uint32_t ,uint32_t> iDToPair(size_t pair) const {
             uint32_t a = pair/m_size;
             uint32_t s = pair% m_size;
             return {s,a};
@@ -68,7 +68,7 @@ namespace TailTest {
             return {s,a,t,b};
         }
 
-        inline size_t toEntry(const uint32_t s, const uint32_t a, const uint32_t t, const uint32_t b){
+        inline size_t toEntry(const uint32_t s, const uint32_t a, const uint32_t t, const uint32_t b) const {
             auto pair1= pairToID(s,a);
             auto pair2= pairToID(t,b);
             return toEntry(pair1,pair2);
@@ -80,7 +80,7 @@ namespace TailTest {
 
         IncompatibilityData(const DFSM &M, const NFA &A);
 
-        inline bool areCompatible(uint32_t s, uint32_t a, uint32_t t, uint32_t b) {
+        inline bool areCompatible(uint32_t s, uint32_t a, uint32_t t, uint32_t b) const {
             auto entry = toEntry(s,a,t,b);
             return (impl.at(entry).in == COMPAT);
         }
@@ -103,9 +103,9 @@ namespace TailTest {
             return sequence;
         }
 
-//        inline std::tuple<uint32_t ,uint32_t ,uint32_t ,uint32_t > next(uint32_t s, uint32_t a, uint32_t t,
+//        inline std::tuple<uint32_t ,uint32_t ,uint32_t ,uint32_t > next(uint32_t s, uint32_t witness, uint32_t t,
 //                                                                   uint32_t b){
-//            auto entry= toEntry(s,a,t,b);
+//            auto entry= toEntry(s,witness,t,b);
 //            auto next_entry=impl[entry].next;
 //            auto [pair1,pair2]=entryToIDs(next_entry);
 //            auto [s2,a2]=iDToPair(pair1);

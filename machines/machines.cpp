@@ -43,12 +43,12 @@ void OFA_old::print() {
 }
 
 size_t OFA_old::numberOfTransitions() {
-    size_t size=0;
-    for(auto v:impl){
-        if(!v.has_value()){
+    size_t size = 0;
+    for (auto v: impl) {
+        if (!v.has_value()) {
 //            ++size;
-        }else{
-            size+=(*v).successors.size();
+        } else {
+            size += (*v).successors.size();
         }
     }
     return size;
@@ -70,7 +70,7 @@ bool TailTest::areEquivalent(const DFSM_old &A, const DFSM_old &B) {
 
     std::unordered_set<uint32_t> visited_states;
     std::vector<uint32_t> unexplored;
-    unexplored.reserve(size1*size2);
+    unexplored.reserve(size1 * size2);
     unexplored.push_back(0);
     visited_states.insert(0);
 
@@ -102,3 +102,29 @@ bool TailTest::areEquivalent(const DFSM_old &A, const DFSM_old &B) {
 }
 
 
+std::unordered_set<uint32_t> NFA::propagate(const std::unordered_set<uint32_t> &state_set, uint32_t in) const {
+    std::unordered_set<uint32_t> result;
+    for (auto a: state_set) {
+        for (auto b: getSuccs(a, in)) {
+            result.insert(b);
+        }
+
+        if (result.size() == size()) break;
+    }
+
+    return result;
+}
+
+
+NumVec DFSM::getOutSeq(const NumVec &seq, uint32_t state) const {
+    NumVec out_seq(seq.size());
+    auto curr_state = state;
+
+    for (size_t i = 0; i < seq.size(); ++i) {
+        auto in = seq[i];
+        out_seq[i] = getOut(curr_state, in);
+        curr_state = getSucc(curr_state, in);
+    }
+
+    return out_seq;
+}

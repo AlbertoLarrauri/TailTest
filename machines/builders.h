@@ -17,7 +17,10 @@ namespace TailTest {
 
     OFA_old buildHeuristicOFA(const DFSM_old &driver, const DFSM_old &driven);
 
-    DFSM_old buildCascadeDFSM(const DFSM_old &driver, const DFSM_old &driven);
+    DFSM buildCascadeDFSM(const DFSM &driver, const DFSM &driven);
+
+
+
 
     int getStateCoverage(const DFSM_old &driver, const DFSM_old &driven);
 

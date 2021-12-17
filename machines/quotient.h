@@ -6,39 +6,64 @@
 #define TAILTEST_QUOTIENT_H
 
 #include "incompatibility_data.h"
+#include "input_tree.h"
+
 namespace TailTest {
     class Quotient {
 
     private:
-        typedef std::tuple<uint32_t ,uint32_t > Pair;
+        typedef std::vector<uint32_t> NumVec;
 
-        const uint32_t m_size;
-        const uint32_t a_size;
+        const DFSM& M;
+        const NFA& A;
 
-        std::vector<Pair> impl;
-        std::vector<std::vector<Pair>> classes_per_state;
-        std::vector<Pair> classes;
+        bool has_reachability_data = false;
 
-        inline size_t pairToID(uint32_t s, uint32_t a) {
-            return size_t(m_size) * size_t(a) + size_t(s);
-        }
 
-        inline Pair iDToPair(size_t id) {
-            uint32_t s = id % m_size;
-            uint32_t a = id / m_size;
-            return {s, a};
+        NumVec pairs_to_class_ID;
+        std::vector<NumVec> classes_per_state;
+        std::vector<std::vector<bool>> reachable_per_state;
+
+        inline size_t pairToID(uint32_t s, uint32_t a) const {
+            return size_t(M.size()) * size_t(a) + size_t(s);
         }
 
     public:
 
-        Quotient(DFSM M, NFA A, IncompatibilityData data);
+        Quotient(const DFSM& M, const NFA& A, const IncompatibilityData& data);
 
-        Pair getClass(uint32_t s, uint32_t a);
 
-        const std::vector<Pair>& getClasses(uint32_t a);
+        inline uint32_t getClass(uint32_t s, uint32_t a) const {
+            auto pair = pairToID(s, a);
+            auto class_ID = pairs_to_class_ID[pair];
+            return classes_per_state[a][class_ID];
+        }
+
+        inline bool isReachable(uint32_t s, uint32_t a) const{
+//            assert(has_reachability_data);
+            auto pair = pairToID(s, a);
+            auto class_ID = pairs_to_class_ID[pair];
+            return reachable_per_state[a][class_ID];
+        }
+
+        inline void setReachable(uint32_t s, uint32_t a){
+            auto pair = pairToID(s, a);
+            auto class_ID = pairs_to_class_ID[pair];
+            reachable_per_state[a][class_ID]=true;
+        }
+
+
+        void generateCover(InputTree& cover, std::vector<MacroState>& cover_data);
+
+        inline const NumVec& getClasses(uint32_t a) const{
+            return classes_per_state[a];
+        }
+
 
 
     };
+
+
 
 }
 

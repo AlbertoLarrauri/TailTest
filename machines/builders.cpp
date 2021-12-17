@@ -80,43 +80,43 @@ OFA_old TailTest::buildOFA(const DFSM_old &driver, const DFSM_old &driven) {
 }
 
 
-DFSM_old TailTest::buildCascadeDFSM(const DFSM_old &driver, const DFSM_old &driven) {
-    DFSM_old result(driver.numberOfInputs(), driven.numberOfOutputs());
+DFSM TailTest::buildCascadeDFSM(const DFSM &driver, const DFSM &driven) {
+    DFSM result(driver.numberOfInputs(), driven.numberOfOutputs());
     if (driver.size() == 0 || driven.size() == 0) {
         return result;
     }
 
-    int inputs = driver.numberOfInputs();
-    int size1 = driver.size();
-    int size2 = driven.size();
-    auto ID = [size2](int state1, int state2) {
+    uint32_t inputs = driver.numberOfInputs();
+    uint32_t size1 = driver.size();
+    uint32_t size2 = driven.size();
+    auto ID = [size2](uint32_t state1, uint32_t state2) {
         return size2 * state1 + state2;
     };
 
     std::unordered_map<int, int> state_map;
     std::vector<int> unexplored;
     unexplored.reserve(size1 * size2);
-    int max_state = 0;
+    uint32_t max_state = 0;
     unexplored.push_back(0);
     state_map[ID(0, 0)] = 0;
     result.addStates();
 
     while (!unexplored.empty()) {
-        int pair = unexplored.back();
+        uint32_t pair = unexplored.back();
         unexplored.pop_back();
 
-        int state12 = state_map[pair];
+        uint32_t state12 = state_map[pair];
 
-        int state1 = pair / size2;
-        int state2 = pair % size2;
+        uint32_t state1 = pair / size2;
+        uint32_t state2 = pair % size2;
 
-        for (int i = 0; i < inputs; ++i) {
-            int o = driver.getOut(state1, i);
-            int t = driven.getOut(state2, o);
-            int next1 = driver.getSucc(state1, i);
-            int next2 = driven.getSucc(state2, o);
-            int next12;
-            int next_pair = ID(next1, next2);
+        for (uint32_t i = 0; i < inputs; ++i) {
+            uint32_t o = driver.getOut(state1, i);
+            uint32_t t = driven.getOut(state2, o);
+            uint32_t next1 = driver.getSucc(state1, i);
+            uint32_t next2 = driven.getSucc(state2, o);
+            uint32_t next12;
+            uint32_t next_pair = ID(next1, next2);
 
             if (!state_map.count(next_pair)) {
                 result.addStates();
@@ -125,8 +125,7 @@ DFSM_old TailTest::buildCascadeDFSM(const DFSM_old &driver, const DFSM_old &driv
                 unexplored.push_back(next_pair);
             } else next12 = state_map[next_pair];
 
-            result.setSucc(state12, i, next12);
-            result.setOut(state12, i, t);
+            result.addTransition(state12, i, t, next12);
         }
     }
 

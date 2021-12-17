@@ -5,8 +5,10 @@
 #include "machines/input_tree.h"
 #include "machines/machines.h"
 #include "machines/incompatibility_data.h"
-#include "utils.h"
-
+#include "machines/quotient.h"
+#include "testers/basic.h"
+#include "machines/serializer.h"
+#include "machines/builders.h"
 
 
 //inline boost::container::num_vector<uint32_t> intersect(const boost::container::num_vector<uint32_t>& set0,
@@ -101,6 +103,7 @@
 //};
 //
 
+typedef std::vector<uint32_t> NumVec;
 
 
 int main() {
@@ -128,6 +131,26 @@ int main() {
 
     A.addSucc(2,1,0);
 
+
+
+    DFSM H(3,2);
+    H.addStates(3);
+
+    H.addTransition(0,0,0,2);
+    H.addTransition(0,1,1,1);
+    H.addTransition(0,2,1,2);
+
+    H.addTransition(1,0,1,2);
+    H.addTransition(1,1,1,2);
+    H.addTransition(1,2,1,2);
+
+
+    H.addTransition(2,0,1,0);
+    H.addTransition(2,1,1,0);
+    H.addTransition(2,2,1,0);
+
+
+
     DFSM M(2,2);
 //    M.addStates(3);
 //
@@ -148,61 +171,59 @@ int main() {
     M.addTransition(1,0,0,0);
 
 
-    std::cout<<"Machines built \n";
 
-    typedef boost::container::flat_set<uint32_t> flat_set;
+//    auto set= A.propagate({0},1);
+//    for(auto a:set){
+//        std::cout<<a<<"\n";
+//    }
 
-//    printSequence(M.getRSymbols(0));
-//    printSequence(M.getRSymbols(1));
-//    printSequence(M.getRSymbols(2));
+
+
 //
-//    num_vector set1={};
-//    num_vector set2={1,2};
-//    num_vector set3= intersect(set1,set2);
-
-
-   IncompatibilityData data(M,A);
+//    std::cout<<" (0,1) and (1,1) are compatible: "<<data.areCompatible(0,1,1,1)<<"\n";
 //
-//   for(uint32_t s=0; s<M.size(); ++s){
-//       for(uint32_t t=s+1; t<M.size(); ++t){
-//           for (uint32_t a = 0; a <A.size(); ++a) {
-//               for (uint32_t b = 0; b < A.size(); ++b) {
-//                   std::cout<<"("<<s<<','<<a<<"), and ("<<t<<","<<b<<") compatible: "<<
-//                   data.areCompatible(s,a,t,b)<<"\n";
-//               }
-//           }
-//       }
-//   }
-    std::cout<<"Start ("<<0<<','<<1<<"), and ("<<1<<","<<2<<") \n";
-    printSequence(data.distinguishingSequence(0,1,1,2));
-
-    struct VectorContainer{
-        std::vector<uint32_t> vec;
-    };
-
-    std::vector<uint32_t> vec={2,1,2,4};
-
-    VectorContainer container={std::move(vec)};
-
-    std::cout<<" \n Container contents: \n";
-    for(auto n:container.vec){
-        std::cout<<n<<"\n";
-    }
-
-    std::cout<< container.vec.end()-container.vec.begin();
+//    for(uint32_t a=0; a<A.size(); ++a){
+//        for(uint32_t s=0; s<M.size(); ++s){
+//            std::cout<<"The class of ("<<s<<", "<<a<<") is: "<< quotient.getClass(s,a)<<"\n";
+//        }
+//    }
 
 
 
 
-//    std::num_vector<uint32_t> a={3,1};
-//    std::num_vector iter={a.begin(),c.begin()};
+    BasicTester tester(M,A);
+
+    auto& suite = tester.getSuite(4);
+
+    suite.print();
+
+    std::cout<<suite.countSequences();
+
+
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    std::num_vector<uint32_t> witness={3,1};
+//    std::num_vector iter={witness.begin(),c.begin()};
 //
 //    for(auto it:iter){
 //        std::cout<<*it<<"\n";
 //    }
 
 
-//    std::tuple<uint32_t ,uint32_t > pair=std::make_tuple(a,b);
+//    std::tuple<uint32_t ,uint32_t > pair=std::make_tuple(witness,b);
 //    std::cout<<std::apply(f,pair)<<"\n";
 
 //    typedef boost::container::num_vector<uint32_t> num_vector;
