@@ -7,8 +7,12 @@
 
 #include "incompatibility_data.h"
 #include "input_tree.h"
+#include "containment_relation.h"
 
 namespace TailTest {
+
+    struct MinimalCoverData;
+
     class Quotient {
 
     private:
@@ -53,16 +57,27 @@ namespace TailTest {
         }
 
 
-        void generateCover(InputTree& cover, std::vector<MacroState>& cover_data);
-
         inline const NumVec& getClasses(uint32_t a) const{
             return classes_per_state[a];
         }
 
 
+        void generateCover(InputTree& cover, std::vector<MacroState>& cover_macro_states);
+
+        void generateMinimalCover(InputTree & cover,
+                                    MinimalCoverData& cover_data,
+//                                  std::vector<MacroState> &cover_data,
+//                                  std::unordered_map<uint32_t ,uint32_t >& states_to_vertex,
+//                                  std::vector<bool>& is_vertex_in_cover,
+                                  const ContainmentRelation& rel);
 
     };
 
+    struct MinimalCoverData{
+        std::vector<MacroState> cover_macro_states;
+        std::unordered_map<uint32_t ,uint32_t > states_to_vertex;
+        std::vector<bool> is_vertex_in_cover;
+    };
 
 
 }

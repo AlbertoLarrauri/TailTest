@@ -1,15 +1,15 @@
 //
-// Created by llarrauriborroto on 23/11/2021.
+// Created by llarrauriborroto on 07/01/2022.
 //
 
-#include "basic.h"
+#include "advanced.h"
 #include "../machines/quotient.h"
 #include <unordered_set>
 #include <algorithm>
 
 using namespace TailTest;
 
-void BasicTester::step() {
+void AdvancedTester::step() {
 
     frames.emplace_back();
     auto &succ_frame = frames.back();
@@ -56,7 +56,7 @@ void BasicTester::step() {
 
 }
 
-void BasicTester::pop() {
+void AdvancedTester::pop() {
     assert(vertex_seq.size() == frames.size());
 
     auto& curr_frame = frames.back();
@@ -73,13 +73,13 @@ void BasicTester::pop() {
     frames.pop_back();
 
     if(!current_seq.empty()){
-    current_seq.pop_back();
+        current_seq.pop_back();
     }
 
 }
 
 
-void BasicTester::popAndPrepare() {
+void AdvancedTester::popAndPrepare() {
 
     while (frames.size() > 1) {
         pop();
@@ -98,7 +98,7 @@ void BasicTester::popAndPrepare() {
 
 /// witness belongs to frames.back().A_set
 
-std::vector<std::unordered_set<uint32_t>> BasicTester::backPropagate(uint32_t a) {
+std::vector<std::unordered_set<uint32_t>> AdvancedTester::backPropagate(uint32_t a) {
     DownSet backpropagation;
     backpropagation.push_back({a});
 
@@ -123,7 +123,7 @@ std::vector<std::unordered_set<uint32_t>> BasicTester::backPropagate(uint32_t a)
 }
 
 
-//uint32_t BasicTester::getScore(const BasicTester::DownSet &back_propagation) {
+//uint32_t AdvancedTester::getScore(const AdvancedTester::DownSet &back_propagation) {
 //    NumVec scores(A.size(), 0);
 //    for (const auto &A_set: back_propagation) {
 //        for (auto a: A_set) {
@@ -134,7 +134,7 @@ std::vector<std::unordered_set<uint32_t>> BasicTester::backPropagate(uint32_t a)
 //    return *(std::max_element(scores.begin(), scores.end()));
 //}
 
-void BasicTester::exploitCertificate(Certificate &cert, size_t initial_vertex) {
+void AdvancedTester::exploitCertificate(Certificate &cert, size_t initial_vertex) {
     if (cert.exploited) return;
     cert.exploited = true;
     auto &positions = cert.positions;
@@ -168,15 +168,16 @@ void BasicTester::exploitCertificate(Certificate &cert, size_t initial_vertex) {
 
 }
 
-BasicTester::BasicTester(const DFSM &_M, const NFA &_A) :
+AdvancedTester::AdvancedTester(const DFSM &_M, const NFA &_A, const ContainmentRelation& _rel) :
         M(_M),
         A(_A),
+        rel(_rel),
         suite(A.numberOfInputs()),
         data(_M, _A),
         quotient(_M, _A, data) {}
 
 
-bool BasicTester::searchCertificates(uint32_t k) {
+bool AdvancedTester::searchCertificates(uint32_t k) {
     auto &curr_frame = frames.back();
     bool all_found = true;
 
@@ -249,7 +250,7 @@ bool BasicTester::searchCertificates(uint32_t k) {
 }
 
 
-void BasicTester::saturateSequence(size_t initial_vertex) {
+void AdvancedTester::saturateSequence(size_t initial_vertex) {
     suite.addSequence(current_seq, initial_vertex);
     vertex_seq.reserve(current_seq.size());
     auto curr_vertex = vertex_seq.back();
@@ -276,15 +277,15 @@ void BasicTester::saturateSequence(size_t initial_vertex) {
 }
 
 
-const InputTree &BasicTester::getSuite(uint32_t k) {
+const InputTree &AdvancedTester::getSuite(uint32_t k) {
 
-    quotient.generateCover(suite, cover_data);
+    quotient.generateMinimalCover(suite, cover_data, rel);
 
-    size_t cover_size = cover_data.size();
+
+    size_t cover_size = suite.size();
 
     std::vector<MacroState> cover_macro_states(cover_size);
     cover_macro_states[0] = {{0}, 0};
-
     {
         std::vector<size_t> stack = {0};
         while (!stack.empty()) {
@@ -304,8 +305,8 @@ const InputTree &BasicTester::getSuite(uint32_t k) {
 
 
     for (size_t vertex = 0; vertex < cover_size; ++vertex) {
-        auto &A_set = cover_data[vertex].A_set;
-        auto s = cover_data[vertex].s;
+        auto &A_set = cover_macro_states[vertex].A_set;
+        auto s = cover_macro_states[vertex].s;
         for (auto a: A_set) {
             const auto &classes = quotient.getClasses(a);
             for (auto t: classes) {

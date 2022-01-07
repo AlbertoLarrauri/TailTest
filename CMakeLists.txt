@@ -16,7 +16,17 @@ add_library( TailTest SHARED
         machines/builders.cpp
         machines/serializer.cpp
         machines/serializer.h
-        machines/incompatibility_data.cpp machines/incompatibility_data.h machines/input_tree.cpp machines/input_tree.h machines/quotient.cpp machines/quotient.h testers/basic.cpp testers/basic.h)
+        machines/containment_relation.h
+        machines/incompatibility_data.cpp machines/incompatibility_data.h
+        machines/input_tree.cpp
+        machines/input_tree.h
+        machines/quotient.cpp
+        machines/quotient.h
+        testers/basic.cpp
+        testers/basic.h
+        testers/advanced.cpp
+        testers/advanced.h
+        )
 
 add_library(FSMlib SHARED
         FSMlib/Learning/BlackBox.h

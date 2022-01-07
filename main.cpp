@@ -131,6 +131,8 @@ int main() {
 
     A.addSucc(2,1,0);
 
+    ContainmentRelation rel(A.size());
+    rel.setContainment(0,1,true);
 
 
     DFSM H(3,2);
@@ -171,6 +173,24 @@ int main() {
     M.addTransition(1,0,0,0);
 
 
+    IncompatibilityData data(M,A);
+    Quotient quotient(M,A,data);
+
+    InputTree cover(A.numberOfInputs());
+    MinimalCoverData cover_data;
+
+    quotient.generateMinimalCover(cover, cover_data, rel);
+
+    cover.print();
+
+    for(auto b:cover_data.is_vertex_in_cover){
+        std::cout<<b<<",";
+    }
+
+    std::cout<<"\n";
+
+
+
 
 //    auto set= A.propagate({0},1);
 //    for(auto a:set){
@@ -191,13 +211,13 @@ int main() {
 
 
 
-    BasicTester tester(M,A);
-
-    auto& suite = tester.getSuite(4);
-
-    suite.print();
-
-    std::cout<<suite.countSequences();
+//    BasicTester tester(M,A);
+//
+//    auto& suite = tester.getSuite(6);
+//
+//    suite.print();
+//
+//    std::cout<<suite.countSequences();
 
 
 
