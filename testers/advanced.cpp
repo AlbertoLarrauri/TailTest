@@ -59,20 +59,20 @@ void AdvancedTester::step() {
 void AdvancedTester::pop() {
     assert(vertex_seq.size() == frames.size());
 
-    auto& curr_frame = frames.back();
+    auto &curr_frame = frames.back();
     auto curr_vertex = vertex_seq.back();
     auto curr_s = curr_frame.s;
 
-    for(auto id:curr_frame.toDistinguish){
-        auto [t,a]=IDToPair(id);
-        suite.addSequence(data.distinguishingSequence(curr_s,a,t,a), curr_vertex);
+    for (auto id: curr_frame.toDistinguish) {
+        auto[t, a]=IDToPair(id);
+        suite.addSequence(data.distinguishingSequence(curr_s, a, t, a), curr_vertex);
     }
 
 
     vertex_seq.pop_back();
     frames.pop_back();
 
-    if(!current_seq.empty()){
+    if (!current_seq.empty()) {
         current_seq.pop_back();
     }
 
@@ -135,40 +135,9 @@ std::vector<std::unordered_set<uint32_t>> AdvancedTester::backPropagate(uint32_t
 //}
 
 void AdvancedTester::exploitCertificate(Certificate &cert, size_t initial_vertex) {
-    if (cert.exploited) return;
-    cert.exploited = true;
-    auto &positions = cert.positions;
-    auto &a = cert.witness;
-//
-//    NumVec state_vec;
-//
-//    {
-//        std::unordered_set<uint32_t> state_set;
-//        for (auto pos: positions) {
-//            auto s = frames[pos].s;
-//            state_set.insert(s);
-//        }
-//
-//        state_vec.insert(state_vec.end(), state_set.begin(), state_set.end());
-//    }
-
-    auto &state_vec = quotient.getClasses(a);
-    for (auto pos: positions) {
-        auto s = frames[pos].s;
-        for (auto t: state_vec) {
-            if (!data.areCompatible(s, a, t, a)) {
-//                auto dist_seq = data.distinguishingSequence(s, a, t, a);
-//                NumVec seq_to_add(current_seq.begin(), current_seq.begin() + pos);
-//                seq_to_add.insert(seq_to_add.end(), dist_seq.begin(), dist_seq.end());
-//                suite.addSequence(seq_to_add, initial_vertex);
-                frames[pos].toDistinguish.insert(pairToID(t, a));
-            }
-        }
-    }
-
 }
 
-AdvancedTester::AdvancedTester(const DFSM &_M, const NFA &_A, const ContainmentRelation& _rel) :
+AdvancedTester::AdvancedTester(const DFSM &_M, const NFA &_A, const ContainmentRelation &_rel) :
         M(_M),
         A(_A),
         rel(_rel),
@@ -181,6 +150,12 @@ bool AdvancedTester::searchCertificates(uint32_t k) {
     auto &curr_frame = frames.back();
     bool all_found = true;
 
+    struct ChainSearchNode {
+        ChainSearchNode *parent = nullptr;
+        uint32_t state = 0;
+        uint32_t position = 0;
+        uint32_t height = 0;
+    };
 
     /// For all nodes try to find a certificate
 
@@ -189,61 +164,96 @@ bool AdvancedTester::searchCertificates(uint32_t k) {
         if (ptr) continue;
 
         auto back_propagation = backPropagate(a);
-        std::vector<NumVec> certificates(A.size());
-        NumVec scores(A.size(), 0);
-        for (uint32_t b = 0; b < A.size(); ++b) {
-            scores[b] = quotient.getClasses(b).size();
-        }
-        bool found = false;
-        uint32_t witness = 0;
+        std::vector<Chain> chains(A.size());
+
+        std::vector<std::unique_ptr<ChainSearchNode>> chain_search;
+        std::unordered_map<uint32_t, ChainSearchNode *> maximal_chains;
+
 
         for (uint32_t pos = 0; pos < back_propagation.size(); ++pos) {
             auto &set = *(back_propagation.rbegin() + pos);
             for (auto b: set) {
-                auto &positions = certificates[b];
-                positions.push_back(pos);
-                auto &score = scores[b];
-//                ++score;
-
-                if (score + positions.size() == k + 1) {
-                    witness = b;
-                    found = true;
-                    break;
+                uint32_t best_score = 0;
+                uint32_t best_candidate = b;
+                for (uint32_t c = 0; c < A.size(); ++c) {
+                    if (!rel.contains(c, b) || !maximal_chains.count(c)) continue;
+                    auto curr_score = maximal_chains[c]->height;
+                    if (curr_score > best_score) {
+                        best_score = curr_score;
+                        best_candidate = c;
+                    }
                 }
+
+                chain_search.push_back(std::make_unique<ChainSearchNode>());
+                auto &last_node = chain_search.back();
+                last_node->position = pos;
+                last_node->state = b;
+                last_node->height = best_score + 1;
+                if (best_score) {
+                    auto parent_node_ptr = maximal_chains[best_candidate];
+                    last_node->parent = parent_node_ptr;
+                }
+                maximal_chains[b] = last_node.get();
             }
-            if (found) break;
+        }
+
+        bool found = false;
+        uint32_t witness;
+        Basis basis;
+
+        for (auto &[state, node]: maximal_chains) {
+            auto score = node->height;
+//            if (score + M.size() < k + 1) continue;
+            if (score < k + 1) {
+                continue;
+            } else {
+                found = true;
+                witness = state;
+                break;
+            }
+//            NumVec states;
+//            states.push_back(node->state);
+//            auto curr_node = node->parent;
+//            while (curr_node != nullptr) {
+//                if (curr_node->state != states.back()) {
+//                    states.push_back(curr_node->state);
+//                }
+//                curr_node = curr_node->parent;
+//            }
+//            basis = getBasis(states);
+//            if (basis.size() + node->height > k) {
+//                found = true;
+//                witness = state;
+//                break;
+//            }
         }
 
         if (!found) {
             all_found = false;
-            continue;
+            break;
         }
 
+        std::unique_ptr<Certificate> cert = std::make_unique<Certificate>();
+        auto &search_node = maximal_chains[witness];
+        assert(search_node);
+//        cert->basis = std::move(basis);
+        NumVec rev_positions(search_node->height);
+        NumVec rev_states(search_node->height);
+        auto curr_node = search_node;
+        for (uint32_t i = 0; i < search_node->height; ++i) {
+            rev_positions[i] = curr_node->position;
+            rev_states[i] = curr_node->state;
+            curr_node= curr_node->parent;
+        }
 
-        curr_frame.certificates.push_back(std::make_unique<Certificate>());
-        auto &cert_ptr = curr_frame.certificates.back();
-        auto &cert = *cert_ptr;
-
-        cert.witness = witness;
-        cert.positions = std::move(certificates[witness]);
-
-        ptr = cert_ptr.get();
-
-//        auto rit = back_propagation.rbegin();
-//        uint32_t pos = 0;
-//
-//        while (rit != back_propagation.rend()) {
-//            auto &set = *rit;
-//            if (set.count(witness)) {
-//
-//                cert.positions.push_back(pos);
-//                if (cert.positions.size() == k + 1) break;
-//            }
-//
-//            ++pos;
-//            ++rit;
-//        }
-
+        std::reverse(rev_positions.begin(), rev_positions.end());
+        std::reverse(rev_states.begin(), rev_states.end());
+        cert->chain.positions = std::move(rev_positions);
+        cert->chain.states = std::move(rev_states);
+        assert(cert->chain.size() > k);
+        curr_frame.certificates.push_back(std::move(cert));
+        auto cert_ptr = curr_frame.certificates.back().get();
+        curr_frame.node_dict[a] = cert_ptr;
     }
 
     return all_found;
@@ -270,8 +280,14 @@ void AdvancedTester::saturateSequence(size_t initial_vertex) {
 
     for (auto&[a, ptr]: curr_frame.node_dict) {
         assert(ptr);
-//        ptr->print();
-        exploitCertificate(*ptr, initial_vertex);
+        std::cout<<" Certificate for state "<<a<<" at sequence: ";
+        for(auto i: current_seq){
+            std::cout<<i<<" - ";
+        }
+        std::cout<<"\n";
+        ptr->print();
+////        ptr->print();
+//        exploitCertificate(*ptr, initial_vertex);
     }
 
 }
@@ -279,110 +295,62 @@ void AdvancedTester::saturateSequence(size_t initial_vertex) {
 
 const InputTree &AdvancedTester::getSuite(uint32_t k) {
 
-    quotient.generateMinimalCover(suite, cover_data, rel);
 
+    size_t initial_vertex = 0;
 
-    size_t cover_size = suite.size();
+    auto initial_A_set = {0};
+    auto initial_s = 0;
 
-    std::vector<MacroState> cover_macro_states(cover_size);
-    cover_macro_states[0] = {{0}, 0};
-    {
-        std::vector<size_t> stack = {0};
-        while (!stack.empty()) {
-            auto curr_vertex = stack.back();
-            auto curr_s = cover_macro_states[curr_vertex].s;
-            auto &curr_A_set = cover_macro_states[curr_vertex].A_set;
-            stack.pop_back();
-            for (uint32_t in = 0; in < A.numberOfInputs(); ++in) {
-                auto next_vertex = suite.getNext(curr_vertex, in);
-                if (next_vertex == InputTree::NO_SUCC) continue;
-                stack.push_back(next_vertex);
-                cover_macro_states[next_vertex].s = M.getSucc(curr_s, in);
-                cover_macro_states[next_vertex].A_set = A.propagate(curr_A_set, in);
-            }
+    current_seq.clear();
+
+    vertex_seq = {initial_vertex};
+    //// Building initial frame:
+
+    frames.clear();
+
+    frames.emplace_back();
+
+    auto &initial_frame = frames.back();
+
+    auto &initial_dict = initial_frame.node_dict;
+
+    for (auto a: initial_A_set) {
+        initial_dict[a] = nullptr;
+    }
+
+    auto &initial_inputs = initial_frame.inputs;
+
+    NumSet initial_inputs_aux;
+
+    for (auto a: initial_A_set) {
+        for (auto in: A.getSymbols(a)) {
+            initial_inputs_aux.insert(in);
         }
     }
 
+    initial_inputs.insert(initial_inputs.begin(), initial_inputs_aux.begin(),
+                          initial_inputs_aux.end());
 
-    for (size_t vertex = 0; vertex < cover_size; ++vertex) {
-        auto &A_set = cover_macro_states[vertex].A_set;
-        auto s = cover_macro_states[vertex].s;
-        for (auto a: A_set) {
-            const auto &classes = quotient.getClasses(a);
-            for (auto t: classes) {
-                if (data.areCompatible(s, a, t, a)) continue;
-                auto dist_sequence = data.distinguishingSequence(s, a, t, a);
-                suite.addSequence(dist_sequence, vertex);
-            }
+    initial_frame.s = initial_s;
+
+
+    while (!frames.empty()) {
+
+        while (!searchCertificates(k)) {
+            step();
         }
+
+        saturateSequence(initial_vertex);
+
+
+        popAndPrepare();
     }
 
-
-    for (size_t vertex = 0; vertex < cover_size; ++vertex) {
-
-        auto &pre_A_set = cover_macro_states[vertex].A_set;
-        auto pre_s = cover_macro_states[vertex].s;
-
-        for (uint32_t initial_in = 0; initial_in < A.numberOfInputs(); ++initial_in) {
-
-            auto initial_vertex = suite.getNext(vertex, initial_in);
-            if (initial_vertex < cover_size) continue;
-
-            auto initial_A_set = A.propagate(pre_A_set, initial_in);
-            auto initial_s = M.getSucc(pre_s, initial_in);
-
-            if (initial_A_set.empty()) continue;
-
-            if (initial_vertex == InputTree::NO_SUCC) {
-                initial_vertex = suite.addSymbol(initial_in, vertex);
-            }
-
-
-            current_seq.clear();
-
-            vertex_seq = {initial_vertex};
-            //// Building initial frame:
-
-            frames.clear();
-
-            frames.emplace_back();
-
-            auto &initial_frame = frames.back();
-
-            auto &initial_dict = initial_frame.node_dict;
-
-            for (auto a: initial_A_set) {
-                initial_dict[a] = nullptr;
-            }
-
-            auto &initial_inputs = initial_frame.inputs;
-
-            NumSet initial_inputs_aux;
-
-            for (auto a: initial_A_set) {
-                for (auto in: A.getSymbols(a)) {
-                    initial_inputs_aux.insert(in);
-                }
-            }
-
-            initial_inputs.insert(initial_inputs.begin(), initial_inputs_aux.begin(),
-                                  initial_inputs_aux.end());
-
-            initial_frame.s = initial_s;
-
-
-            while (!frames.empty()) {
-
-                while (!searchCertificates(k)) {
-                    step();
-                }
-
-                saturateSequence(initial_vertex);
-
-                popAndPrepare();
-            }
-        }
-    }
 
     return suite;
+}
+
+AdvancedTester::Basis AdvancedTester::getBasis(NumVec &states) {
+    Basis basis;
+    return basis;
 }

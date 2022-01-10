@@ -33,21 +33,43 @@ namespace TailTest {
 
 
         typedef std::vector<NumSet> DownSet;
+        typedef std::vector<std::pair<uint32_t, uint32_t>> Basis;
 
 
-        struct Certificate{
-            uint32_t witness;
+        struct Chain{
+            NumVec states;
             NumVec positions;
-            bool exploited=false;
             inline void print() const{
-
-                std::cout<<" Witness: "<<witness<<"\n Positions: ";
-                for(auto i:positions){
-                    std::cout<<i<<",";
+                std::cout<<"Printing chain (position, state): ";
+                for(uint32_t i=0; i<positions.size(); ++i){
+                    std::cout << "(" << positions[i] << ", " << states[i] << "), ";
                 }
                 std::cout<<"\n";
             }
 
+            inline void push(uint32_t position, uint32_t state){
+                positions.push_back(position);
+                states.push_back(state);
+            }
+
+            inline uint32_t size(){
+                return positions.size();
+            }
+
+        };
+
+        struct Certificate{
+            bool exploited=false;
+            Chain chain;
+            Basis basis;
+            inline void print(){
+                chain.print();
+                std::cout<<"Printing basis (M state, A state): ";
+                for(auto [s,a]:basis){
+                    std::cout<<"("<<s<<", "<<a<<"), ";
+                }
+                std::cout<<"\n";
+            }
         };
 
         struct Frame{
@@ -62,11 +84,8 @@ namespace TailTest {
             }
         };
 
-
-
         NumVec current_seq;
         std::vector< size_t > vertex_seq;
-
         std::vector< Frame > frames;
 
         inline uint32_t pairToID(uint32_t s, uint32_t a) const {
@@ -78,7 +97,6 @@ namespace TailTest {
             auto s = id % M.size();
             return std::make_pair(s,a);
         }
-
 
 
         void step();
@@ -93,10 +111,13 @@ namespace TailTest {
 
         void saturateSequence(size_t initial_vertex);
 
+        Basis getBasis(NumVec& states);
+
 
 //        uint32_t getScore(const DownSet& back_propagation);
 
         void exploitCertificate(Certificate& cert, size_t initial_vertex);
+
 
         inline void printFrames() const {
             std::cout<<"Frames: \n";

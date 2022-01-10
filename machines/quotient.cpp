@@ -191,7 +191,7 @@ void Quotient::generateMinimalCover(InputTree &cover,
     }
 
 
-    std::cout << " Core : ";
+    std::cout << " Basis : ";
     for (auto[s, a]: core) {
         std::cout << "( " << s << ", " << a << " ), ";
     }

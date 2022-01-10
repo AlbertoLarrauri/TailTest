@@ -134,7 +134,7 @@ std::vector<std::unordered_set<uint32_t>> BasicTester::backPropagate(uint32_t a)
 //    return *(std::max_element(scores.begin(), scores.end()));
 //}
 
-void BasicTester::exploitCertificate(Certificate &cert, size_t initial_vertex) {
+void BasicTester::exploitCertificate(Certificate &cert) {
     if (cert.exploited) return;
     cert.exploited = true;
     auto &positions = cert.positions;
@@ -269,8 +269,7 @@ void BasicTester::saturateSequence(size_t initial_vertex) {
 
     for (auto&[a, ptr]: curr_frame.node_dict) {
         assert(ptr);
-//        ptr->print();
-        exploitCertificate(*ptr, initial_vertex);
+        exploitCertificate(*ptr);
     }
 
 }

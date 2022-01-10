@@ -9,6 +9,7 @@
 #include "testers/basic.h"
 #include "machines/serializer.h"
 #include "machines/builders.h"
+#include "advanced.h"
 
 
 //inline boost::container::num_vector<uint32_t> intersect(const boost::container::num_vector<uint32_t>& set0,
@@ -173,22 +174,27 @@ int main() {
     M.addTransition(1,0,0,0);
 
 
-    IncompatibilityData data(M,A);
-    Quotient quotient(M,A,data);
+//    IncompatibilityData data(M,A);
+//    Quotient quotient(M,A,data);
+//
+//    InputTree cover(A.numberOfInputs());
+//    MinimalCoverData cover_data;
+//
+//    quotient.generateMinimalCover(cover, cover_data, rel);
+//
+//    cover.print();
+//
+//    for(auto b:cover_data.is_vertex_in_cover){
+//        std::cout<<b<<",";
+//    }
+//
+//    std::cout<<"\n";
 
-    InputTree cover(A.numberOfInputs());
-    MinimalCoverData cover_data;
+    AdvancedTester tester(M,A,rel);
 
-    quotient.generateMinimalCover(cover, cover_data, rel);
+    auto suite=tester.getSuite(3);
 
-    cover.print();
-
-    for(auto b:cover_data.is_vertex_in_cover){
-        std::cout<<b<<",";
-    }
-
-    std::cout<<"\n";
-
+    suite.print();
 
 
 
