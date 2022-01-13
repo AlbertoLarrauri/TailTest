@@ -174,116 +174,35 @@ int main() {
     M.addTransition(1,0,0,0);
 
 
-//    IncompatibilityData data(M,A);
-//    Quotient quotient(M,A,data);
-//
-//    InputTree cover(A.numberOfInputs());
-//    MinimalCoverData cover_data;
-//
-//    quotient.generateMinimalCover(cover, cover_data, rel);
-//
-//    cover.print();
-//
-//    for(auto b:cover_data.is_vertex_in_cover){
-//        std::cout<<b<<",";
-//    }
-//
-//    std::cout<<"\n";
 
-    AdvancedTester tester(M,A,rel);
-
-    auto suite=tester.getSuite(3);
-
-    suite.print();
-
-
-
-//    auto set= A.propagate({0},1);
-//    for(auto a:set){
-//        std::cout<<a<<"\n";
-//    }
-
-
+    ContainmentRelation relation = computeLookAheadFwdSimRel(A,100);
+    for(uint32_t a=0; a<A.size(); ++a){
+        for(uint32_t b=0; b<A.size(); ++b){
+            std::cout<<" State "<<a<<" contains "<<b<<" : "<<rel.contains(a,b)<<"\n";
+        }
+    }
 
 //
-//    std::cout<<" (0,1) and (1,1) are compatible: "<<data.areCompatible(0,1,1,1)<<"\n";
+//    AdvancedTester tester(M,A,rel);
 //
-//    for(uint32_t a=0; a<A.size(); ++a){
-//        for(uint32_t s=0; s<M.size(); ++s){
-//            std::cout<<"The class of ("<<s<<", "<<a<<") is: "<< quotient.getClass(s,a)<<"\n";
-//        }
-//    }
-
-
-
-
-//    BasicTester tester(M,A);
-//
-//    auto& suite = tester.getSuite(6);
+//    auto suite=tester.getSuite(4);
+//    std::cout<<"Advanced: \n";
 //
 //    suite.print();
 //
-//    std::cout<<suite.countSequences();
-
-
-
+//    std::cout<<" Number of tests: "<<suite.countSequences()<<"\n";
 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    std::num_vector<uint32_t> witness={3,1};
-//    std::num_vector iter={witness.begin(),c.begin()};
-//
-//    for(auto it:iter){
-//        std::cout<<*it<<"\n";
-//    }
-
-
-//    std::tuple<uint32_t ,uint32_t > pair=std::make_tuple(witness,b);
-//    std::cout<<std::apply(f,pair)<<"\n";
-
-//    typedef boost::container::num_vector<uint32_t> num_vector;
-//    num_vector set1,set2;
-////    using boost::container::num_vector;
-////    num_vector<uint32_t> set1,set2;
-//    set1.insert(2);
-//    set1.insert(3);
-//    set1.insert(4);
-//    set1.insert(7);
-//    set1.insert(9);
+//    std::cout<<"\n Basic:";
 //
 //
-//    set2.insert(2);
-//    set2.insert(4);
-//    set2.insert(5);
-//    set2.insert(7);
+//    BasicTester tester2(M,A);
 //
-//    auto set= intersect(set1,set2);
+//    auto suite2 = tester2.getSuite(4);
 //
-//    std::cout<<" Intersection: \n";
-////    set1.insert(boost::container::ordered_unique_range, set2.begin(),set2.end());
-////    std::cout << "Hello, World! " << set1.size()<< std::endl;
-//    for(auto i=set.begin();
-//    i!=set.end();
-//    ++i){
-//        std::cout<<*i<<"\n";
-//    }
+//    suite2.print();
 //
-//    std::cout<<"\n Intersection iterator: \n";
-//    IntersectionIterator iterator(set1,set2);
-//    while(iterator.inRange()){
-//        std::cout<<iterator.next()<<"\n";
-//    }
+//    std::cout<<" Number of tests: "<<suite2.countSequences()<<"\n";
+//
 
 
     return 0;

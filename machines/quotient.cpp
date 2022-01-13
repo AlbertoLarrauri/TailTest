@@ -105,7 +105,7 @@ void Quotient::generateMinimalCover(InputTree &cover,
     assert(!has_reachability_data);
 
     std::vector<MacroState> &cover_macro_states= cover_data.cover_macro_states;
-    std::unordered_map<uint32_t, uint32_t> &states_to_vertex = cover_data.states_to_vertex;
+    std::unordered_map<uint32_t, uint32_t>& states_to_vertex = cover_data.states_to_vertex;
     std::vector<bool> &is_vertex_in_cover= cover_data.is_vertex_in_cover;
 
     cover_macro_states.clear();
@@ -176,6 +176,12 @@ void Quotient::generateMinimalCover(InputTree &cover,
         }
     }
 
+//    std::cout<<" Pairs subsumed by (0,0) (s,a): ";
+//    for(auto &[s,a]: prod_down_sets[pairToID(0,0)]){
+//        std::cout<<"("<<s<<", "<<a<<"), ";
+//    }
+//    std::cout<<"\n";
+
     /// Computing a core
 
     std::vector<std::pair<uint32_t, uint32_t >> core;
@@ -191,11 +197,11 @@ void Quotient::generateMinimalCover(InputTree &cover,
     }
 
 
-    std::cout << " Basis : ";
-    for (auto[s, a]: core) {
-        std::cout << "( " << s << ", " << a << " ), ";
-    }
-    std::cout << "\n";
+//    std::cout << " Core (s,a): ";
+//    for (auto[s, a]: core) {
+//        std::cout << "( " << s << ", " << a << " ), ";
+//    }
+//    std::cout << "\n";
 
     /// Computing cover
 
@@ -208,16 +214,17 @@ void Quotient::generateMinimalCover(InputTree &cover,
 ///    std::vector<bool> &is_vertex_in_cover,
 
     cover_macro_states = {{{0}, 0}};
+    std::vector<MacroState> aux_cover_macro_states={{{0},0}};
     already_reached[0] = true;
 
 
-    for (uint32_t i = 0; i < cover_macro_states.size(); ++i) {
+    for (uint32_t i = 0; i < aux_cover_macro_states.size(); ++i) {
         uint32_t node = i;
 
 
         for (uint32_t in = 0; in < A.numberOfInputs(); ++in) {
-            const auto &A_set = cover_macro_states[i].A_set;
-            const auto &s = cover_macro_states[i].s;
+            const auto &A_set = aux_cover_macro_states[i].A_set;
+            const auto &s = aux_cover_macro_states[i].s;
 
             if (cover.getNext(node, in) != InputTree::NO_SUCC) continue;
             auto next_A_set = A.propagate(A_set, in);
@@ -244,7 +251,8 @@ void Quotient::generateMinimalCover(InputTree &cover,
 
             if (next_A_set.empty()) continue;
             cover.addSymbol(in, node);
-            cover_macro_states.push_back({std::move(next_A_set), next_s});
+            aux_cover_macro_states.push_back({std::move(next_A_set), next_s});
+            cover_macro_states.push_back({A.propagate(cover_macro_states[i].A_set,in), next_s});
             if (count == core.size()) goto COVER_COMPUTED;
         }
 
@@ -269,12 +277,23 @@ void Quotient::generateMinimalCover(InputTree &cover,
     }
 
 
-    for (auto[s, a]: core) {
-        std::cout << " Location (" << s << ", " << a << ") reached in vertex " << states_to_vertex[pairToID(s, a)]
-                  << "\n";
+//    for (auto[s, a]: core) {
+//        std::cout << " Location (" << s << ", " << a << ") reached in vertex " << states_to_vertex[pairToID(s, a)]
+//                  << "\n";
+//    }
+//
+//    std::cout << " Location (0,2) contained in vertex " << states_to_vertex[pairToID(0,2)]
+//              << "\n";
 
-    }
 
-    std::cout << cover.getNext(0, {1, 1, 1}) << "\n";
 
+//    std::cout << cover.getNext(0, {1, 1, 1}) << "\n";
+
+//    std::cout<<" Core cover: \n";
+//    cover.print();
+//    std::cout<<"\n Are un cover: ";
+//    for(auto b:is_vertex_in_cover){
+//        std::cout<<b<<", ";
+//    }
+//    std::cout<<"\n";
 }

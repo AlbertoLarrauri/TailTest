@@ -116,7 +116,7 @@ namespace TailTest {
 
 //        uint32_t getScore(const DownSet& back_propagation);
 
-        void exploitCertificate(Certificate& cert, size_t initial_vertex);
+        void exploitCertificate(Certificate& cert);
 
 
         inline void printFrames() const {

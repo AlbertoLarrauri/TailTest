@@ -28,8 +28,8 @@ namespace TailTest {
         std::vector<NumVec> classes_per_state;
         std::vector<std::vector<bool>> reachable_per_state;
 
-        inline size_t pairToID(uint32_t s, uint32_t a) const {
-            return size_t(M.size()) * size_t(a) + size_t(s);
+        inline uint32_t pairToID(uint32_t s, uint32_t a) const {
+            return M.size() * a + s;
         }
 
     public:

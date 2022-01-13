@@ -17,7 +17,9 @@ add_library( TailTest SHARED
         machines/serializer.cpp
         machines/serializer.h
         machines/containment_relation.h
-        machines/incompatibility_data.cpp machines/incompatibility_data.h
+        machines/containment_relation.cpp
+        machines/incompatibility_data.cpp
+        machines/incompatibility_data.h
         machines/input_tree.cpp
         machines/input_tree.h
         machines/quotient.cpp
